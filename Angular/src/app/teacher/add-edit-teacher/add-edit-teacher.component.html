@@ -1,0 +1,103 @@
+<div matDialogContent class="content">
+    <h2>
+     
+        <b>Teacher Form</b>
+    </h2>
+    <br>
+    <div class="container">
+        <form [formGroup]="Form" (ngSubmit)="SubmitForm(Form.value)">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Teacher Name</mat-label>
+                <input matInput name="teacherName" #input maxlength="10"  placeholder="Enter Name" formControlName="teacherName" id="Teacher">
+                <mat-hint align="end">Not more then 10 characters long.</mat-hint>
+                <mat-error *ngIf="myError('teacherName', 'required')">Name is required</mat-error>
+                <mat-error *ngIf="myError('teacherName', 'maxlength')">Limit exceed</mat-error>
+            </mat-form-field>
+           
+
+            <mat-form-field appearance="outline">
+                <mat-label>Teacher Email</mat-label>
+                <input matInput name="teacherEmail"   #input maxlength="20"formControlName="teacherEmail" placeholder="teacherEmail">
+                <mat-error *ngIf="myError('teacherEmail', 'required')">Proper Email is required</mat-error>
+                <mat-error *ngIf="myError('teacherEmail', 'maxlength')">Limit exceed</mat-error>
+            </mat-form-field>
+           ]
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field appearance="fill" class="example-form-field">
+                <mat-label>Teacher DOB</mat-label>
+                <input matInput [matDatepicker]="datepicker" [max]="today" formControlName="dob">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                    <mat-datepicker-actions>
+                        <button mat-button matDatepickerCancel class="btn">Cancel</button>
+                        <button mat-raised-button color="primary" matDatepickerApply class="btn">Apply</button>
+                    </mat-datepicker-actions>
+                </mat-datepicker>
+
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput name="teacherPhone" formControlName="teacherPhone" placeholder="Phone Number">
+                
+            </mat-form-field>
+            
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput name="city" formControlName="city" placeholder="city">
+            </mat-form-field>
+
+            <div matDialogActions>
+                <button mat-raised-button class="btn btn-shape" (click)="exit()">Cancel</button>&nbsp;&nbsp;
+                <button mat-raised-button class="btn btn-shape" color="primary" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <div *ngIf="Form.controls.teacherEmail.invalid" class="alert alert-danger" ngClass="invalid">
+                <div *ngIf="Form.controls.teacherEmail.errors">
+                    This Field is Required.
+                    Write Proper Email
+                </div>
+            </div> -->
+
+             <!-- <span *ngIf="Form.controls.teacherName.invalid" class="alert alert-danger" ngClass="invalid">
+                <div *ngIf="Form.controls.teacherName.errors">
+                  <span> This Field is Required,your can enter only 50 characters</span>
+                </div>
+            </span> -->
+
+            <!-- <div *ngIf="Form.controls.teacherPhone.invalid" class="alert alert-danger" ngClass="invalid">
+                <div *ngIf="Form.controls.teacherPhone.errors">
+                    Enter Only 10 Digits
+                </div>
+            </div> -->

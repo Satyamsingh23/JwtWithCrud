@@ -1,0 +1,64 @@
+<div matDialogContent class="content">
+    <div class="container">
+        <form [formGroup]="Form"   (ngSubmit)="SubmitForm(Form.value)">
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Student Name</mat-label>
+                <input matInput name="studentName" formControlName="studentName" placeholder="studentName">
+            </mat-form-field>
+          
+
+            <mat-form-field appearance="outline">
+                <mat-label>Student Email</mat-label>
+                <input matInput name="studentEmail" formControlName="studentEmail" placeholder="studentEmail">
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" class="example-form-field" >
+                <mat-label>Student DOB</mat-label>
+                <input matInput [matDatepicker]="datepicker" formControlName="dob" >
+                <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                    <mat-datepicker-actions>
+                        <button mat-button matDatepickerCancel class="btn">Cancel</button>
+                        <button mat-raised-button color="primary" matDatepickerApply class="btn">Apply</button>
+                    </mat-datepicker-actions>
+                </mat-datepicker>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput name="studentPhone"   formControlName="studentPhone" placeholder="Phone Number">
+            </mat-form-field>
+        
+
+            <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput name="city" formControlName="city" placeholder="city">
+            </mat-form-field>
+
+            <div matDialogActions>
+                <button mat-raised-button class="btn btn-shape"  (click)="exit()">Cancel</button>&nbsp;&nbsp;
+                <button mat-raised-button class="btn btn-shape" color="primary"  disabled="Form.invalid" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- <span *ngIf="Form.controls.studentPhone.invalid" class="alert alert-danger" ngClass="invalid">
+    <div *ngIf="Form.controls.studentPhone.errors">
+        Enter Only 10 Digits
+    </div>
+</span> -->
+<!-- <span *ngIf="Form.controls.studentEmail.invalid" class="alert alert-danger" ngClass="invalid">
+    <div *ngIf="Form.controls.studentEmail.errors">
+        This Field is Required.
+        Write Proper Email
+    </div>
+</span> -->
+
+<!-- <span *ngIf="Form.controls.studentName.invalid" class="alert alert-danger" ngClass="invalid">
+    <div *ngIf="Form.controls.studentName.errors">
+        This Field is Required,your can enter only 50 characters
+    </div>
+</span> -->
